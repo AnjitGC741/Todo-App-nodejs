@@ -7,9 +7,9 @@ var items = [];
 app.set('view engine','ejs');
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static("Public"));
+
 // defining a route
 app.get("/",function(req,res){
-    // res.sendFile(__dirname+"/index.html");
     var today = new Date();
     var options = {
         weekday:"long",
@@ -26,7 +26,8 @@ app.post("/",function(req,res){
 
 });
 app.post("/delete",function(req,res){
-    var index= req.body.newItem;
+    var index= req.body.indexValue;
+    console.log(index);
     items.splice(index, 1);
      res.redirect("/");
  });
